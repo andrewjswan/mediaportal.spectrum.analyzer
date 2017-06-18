@@ -1,25 +1,30 @@
-using System;
-using System.Windows.Forms;
+﻿using MediaPortal.Configuration;
 using MediaPortal.GUI.Library;
- 
+
+using System;
+
 namespace SpectrumAnalyzer
 {
+  [PluginIcons("SpectrumAnalyzer.Resources.SpectrumAnalyzer_Icon.png", "SpectrumAnalyzer.Resources.SpectrumAnalyzer_Icon_Disabled.png")]
+
   public class SpectrumAnalyzer : IPlugin, ISetupForm
   {
- 
+    private SpectrumMain SM;
+    private SpectrumAnalyzerConfig SC;
+
     public SpectrumAnalyzer()
     {
- 
+      SM = new SpectrumMain();
     }
 
     public void Start()
     {
-      throw new NotImplementedException();
+      SM.Start();
     }
 
     public void Stop()
     {
-      throw new NotImplementedException();
+      SM.Stop();
     }
 
     #region ISetupForm Members
@@ -27,13 +32,13 @@ namespace SpectrumAnalyzer
     // Returns the name of the plugin which is shown in the plugin menu
     public string PluginName()
     {
-      return "Spectrum Handler";
+      return "Spectrum Analyzer";
     }
  
     // Returns the description of the plugin is shown in the plugin menu
     public string Description()
     {
-      return "Spectrum Handler for Mediaportal";
+      return "Spectrum Analyzer for Mediaportal";
     }
  
     // Returns the author of the plugin which is shown in the plugin menu
@@ -45,7 +50,10 @@ namespace SpectrumAnalyzer
     // show the setup dialog
     public void ShowPlugin()
     {
-      MessageBox.Show("WBR, ajs");
+      if (SC == null)
+        SC = new SpectrumAnalyzerConfig();
+      SC.InitSettings();
+      SC.ShowDialog();
     }
  
     // Indicates whether plugin can be enabled/disabled
@@ -71,7 +79,7 @@ namespace SpectrumAnalyzer
     // indicates if a plugin has it's own setup screen
     public bool HasSetup()
     {
-      return false;
+      return true;
     }
  
     /// <summary>

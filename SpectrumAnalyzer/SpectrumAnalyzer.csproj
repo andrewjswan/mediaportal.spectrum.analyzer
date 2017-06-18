@@ -70,7 +70,6 @@
     <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\NLog.dll</HintPath>
-      <Aliases>LMHNLog</Aliases>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -87,6 +86,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SpectrumAnalyzerConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,17 +99,18 @@
     </Compile>
     <Compile Include="SpectrumHandler.cs" />
     <Compile Include="SpectrumAnalyzer.cs" />
+    <Compile Include="SpectrumMain.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpectrumAnalyzerConfig.resx">
       <DependentUpon>SpectrumAnalyzerConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
-    <EmbeddedResource Include="Resources\SpectrumAnalyzer_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\SpectrumAnalyzer_Icon_Disabled.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -122,6 +127,12 @@
   <ItemGroup>
     <None Include="Resources\SpectrumAnalyzer_Icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SpectrumAnalyzer_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SpectrumAnalyzer_Icon_Disabled.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -133,8 +144,8 @@
   <PropertyGroup>
     <PostBuildEvent>cd $(TargetDir)
 copy $(ProjectDir)..\scripts\merge.bat .
-copy $(ProjectDir)..\scripts\Tools\libz.exe .
+copy $(ProjectDir)..\scripts\Tools\ILMerge.exe .
 merge.bat
-del /q merge.bat libz.exe</PostBuildEvent>
+del /q merge.bat ILMerge.exe</PostBuildEvent>
   </PropertyGroup>
 </Project>
