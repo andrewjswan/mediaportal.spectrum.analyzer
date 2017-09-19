@@ -1,7 +1,7 @@
-﻿using MediaPortal.Configuration;
-using MediaPortal.GUI.Library;
+﻿using System;
 
-using System;
+using MediaPortal.Configuration;
+using MediaPortal.GUI.Library;
 
 namespace SpectrumAnalyzer
 {

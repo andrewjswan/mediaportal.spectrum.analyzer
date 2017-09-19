@@ -22,6 +22,13 @@ namespace SpectrumAnalyzer
       udSpectrumMax.Value = Utils.SpectrumMax;
       udSpectrumPeakFall.Value = Utils.SpectrumPeakFall;
       // = Utils.SpectrumProvider;
+      cbSpectrumPeakCalculation.DataSource = Enum.GetValues(typeof(Utils.Calculation));
+      cbSpectrumPeakCalculation.SelectedItem = Utils.SpectrumPeakCalculation;
+
+      udVUMeterMax.Value = Utils.SpectrumDBMax;
+      udVUMeterPeakFall.Value = Utils.SpectrumDBPeakFall;
+
+      cbDebug.Checked = Utils.SpectrumDebug;
     }
 
     private void InitConfig()
@@ -42,7 +49,14 @@ namespace SpectrumAnalyzer
       Utils.SpectrumCount = (int)udSpectrumCount.Value;
       Utils.SpectrumMax = (int)udSpectrumMax.Value;
       Utils.SpectrumPeakFall = (int)udSpectrumPeakFall.Value;
-      // Utils.SpectrumProvider = 
+      // Utils.SpectrumProvider =
+      Utils.SpectrumPeakCalculation = (Utils.Calculation)cbSpectrumPeakCalculation.SelectedItem;
+
+      Utils.SpectrumDBMax = (int)udVUMeterMax.Value;
+      Utils.SpectrumDBPeakFall = (int)udVUMeterPeakFall.Value;
+
+      Utils.SpectrumDebug = cbDebug.Checked;
+
       Utils.SaveSettings();
       Close();
     }

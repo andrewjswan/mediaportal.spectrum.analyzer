@@ -100,6 +100,7 @@
     <Compile Include="SpectrumHandler.cs" />
     <Compile Include="SpectrumAnalyzer.cs" />
     <Compile Include="SpectrumMain.cs" />
+    <Compile Include="SpectrumImage.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

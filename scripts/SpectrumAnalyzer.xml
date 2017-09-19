@@ -13,6 +13,14 @@
               <Items />
             </Files>
           </GroupItem>
+          <GroupItem Name="Skin files">
+            <DisplayName>Skin files</DisplayName>
+            <DefaulChecked>true</DefaulChecked>
+            <Description>Skin files</Description>
+            <Files>
+              <Items />
+            </Files>
+          </GroupItem>
         </Items>
       </Groups>
       <Sections>
@@ -84,22 +92,22 @@
       </PluginDependencies>
       <GeneralInfo>
         <Name>Spectrum Analyzer</Name>
-        <Id>a2731be2-d97a-4d81-a080-cbc5d34ae9c0</Id>
+        <Id>9282cfe9-d873-4c85-8415-721a9018e8f7</Id>
         <Author>ajs</Author>
         <HomePage>https://github.com/andrewjswan/mediaportal.spectrum.analyzer</HomePage>
         <ForumPage>https://forum.team-mediaportal.com/posts/1205829/</ForumPage>
         <UpdateUrl>https://raw.githubusercontent.com/andrewjswan/mediaportal.spectrum.analyzer/master/scripts/SpectrumAnalyzer.xml</UpdateUrl>
         <Version>
-          <Major>1</Major>
+          <Major>2</Major>
           <Minor>0</Minor>
           <Build>0</Build>
-          <Revision>5</Revision>
+          <Revision>8</Revision>
         </Version>
         <ExtensionDescription>Spectrum Analyzer for Mediaportal</ExtensionDescription>
-        <VersionDescription>First worked version</VersionDescription>
+        <VersionDescription>First worked version for 1.18</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/raw/master/builds/SpectrumAnalyzer-1.0.0.5.mpe1</OnlineLocation>
-        <ReleaseDate>2017-06-18T17:53:04.1048577+03:00</ReleaseDate>
+        <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/raw/master/builds/SpectrumAnalyzer-2.0.0.8.mpe1</OnlineLocation>
+        <ReleaseDate>2017-09-19T18:52:40.532189+03:00</ReleaseDate>
         <Tags>music, spectrum, analyzer</Tags>
         <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
         <Params>

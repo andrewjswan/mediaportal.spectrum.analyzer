@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<profile>
+  <section name="SpectrumAnalyzer">
+    <entry name="SpectrumCount">16</entry>
+    <entry name="SpectrumMax">15</entry>
+    <entry name="SpectrumPeakFall">50</entry>
+    <entry name="SpectrumProvider">Mediaportal</entry>
+    <entry name="SpectrumDebug">no</entry>
+    <entry name="SpectrumPeakCalculation">Average</entry>
+  </section>
+</profile>
