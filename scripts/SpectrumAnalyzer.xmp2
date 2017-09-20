@@ -27,36 +27,6 @@
           </Items>
         </Files>
       </GroupItem>
-      <GroupItem Name="Skin files">
-        <DisplayName>Skin files</DisplayName>
-        <DefaulChecked>true</DefaulChecked>
-        <Description>Skin files</Description>
-        <Files>
-          <Items>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-              <Param1 />
-              <UpdateOption>OverwriteIfOlder</UpdateOption>
-              <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
-              <ZipFileName>Installer{CopyFile}\{3cc23af7-1e4e-4e1a-8dd0-2a78f846df43}-SkinSpectrumAnalyzer.xml</ZipFileName>
-              <DestinationFilename>%Skin%\[DEFAULT]\SkinSpectrumAnalyzer.xml</DestinationFilename>
-            </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-              <Param1 />
-              <UpdateOption>OverwriteIfOlder</UpdateOption>
-              <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
-              <ZipFileName>Installer{CopyFile}\{365645e0-e21c-4410-be4e-f9052d6b74d3}-Spectrum.png</ZipFileName>
-              <DestinationFilename>%Skin%\[DEFAULT]\Media\Spectrum\Spectrum.png</DestinationFilename>
-            </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-              <Param1 />
-              <UpdateOption>OverwriteIfOlder</UpdateOption>
-              <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
-              <ZipFileName>Installer{CopyFile}\{517b97da-0ec7-4c8b-b5f3-468bfd7f0ce5}-SpectrumPeak.png</ZipFileName>
-              <DestinationFilename>%Skin%\[DEFAULT]\Media\Spectrum\SpectrumPeak.png</DestinationFilename>
-            </FileItem>
-          </Items>
-        </Files>
-      </GroupItem>
     </Items>
   </Groups>
   <Sections>
@@ -97,41 +67,6 @@ cul8er</Value>
         <IncludedGroups />
         <PanelName>Welcome Screen</PanelName>
         <WizardButtonsEnum>NextCancel</WizardButtonsEnum>
-      </SectionItem>
-      <SectionItem Guid="dd43aa17-4339-410a-bd70-856310667e84" Name="Tree View Selector" ConditionGroup="">
-        <Params>
-          <Items>
-            <SectionParam Name="Header Title">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Header title</Description>
-            </SectionParam>
-            <SectionParam Name="Header description">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Description of section, shown in under section title</Description>
-            </SectionParam>
-            <SectionParam Name="Header image">
-              <Value />
-              <ValueType>File</ValueType>
-              <Description>Image in upper right part</Description>
-            </SectionParam>
-            <SectionParam Name="Description ">
-              <Value />
-              <ValueType>String</ValueType>
-              <Description>Description of this operation</Description>
-            </SectionParam>
-          </Items>
-        </Params>
-        <Actions>
-          <Items />
-        </Actions>
-        <IncludedGroups>
-          <string>Default</string>
-          <string>Skin files</string>
-        </IncludedGroups>
-        <PanelName>Tree View Selector</PanelName>
-        <WizardButtonsEnum>BackNextCancel</WizardButtonsEnum>
       </SectionItem>
       <SectionItem Guid="ea79a142-a7c9-4530-b7a8-d3eac63eef42" Name="Install Section" ConditionGroup="">
         <Params>
@@ -333,27 +268,6 @@ cul8er</Value>
         <ZipFileName>Installer{CopyFile}\{61c8db69-e77d-467a-9d09-7f73b1878bd5}-SpectrumAnalyzer.xml</ZipFileName>
         <DestinationFilename>%Config%\SpectrumAnalyzer.xml</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-        <Param1 />
-        <UpdateOption>OverwriteIfOlder</UpdateOption>
-        <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{3cc23af7-1e4e-4e1a-8dd0-2a78f846df43}-SkinSpectrumAnalyzer.xml</ZipFileName>
-        <DestinationFilename>%Skin%\[DEFAULT]\SkinSpectrumAnalyzer.xml</DestinationFilename>
-      </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-        <Param1 />
-        <UpdateOption>OverwriteIfOlder</UpdateOption>
-        <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{365645e0-e21c-4410-be4e-f9052d6b74d3}-Spectrum.png</ZipFileName>
-        <DestinationFilename>%Skin%\[DEFAULT]\Media\Spectrum\Spectrum.png</DestinationFilename>
-      </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
-        <Param1 />
-        <UpdateOption>OverwriteIfOlder</UpdateOption>
-        <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{517b97da-0ec7-4c8b-b5f3-468bfd7f0ce5}-SpectrumPeak.png</ZipFileName>
-        <DestinationFilename>%Skin%\[DEFAULT]\Media\Spectrum\SpectrumPeak.png</DestinationFilename>
-      </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
@@ -364,18 +278,7 @@ cul8er</Value>
     </Items>
   </UniqueFileList>
   <ProjectSettings>
-    <FolderGroups>
-      <FolderGroup InstallType="CopyFile" SystemFile="false" Modified="true">
-        <Param1 />
-        <UpdateOption>OverwriteIfOlder</UpdateOption>
-        <LocalFileName />
-        <ZipFileName>Installer{CopyFile}\{9ad569ce-2541-44bc-a485-de5d8ca4322e}-</ZipFileName>
-        <DestinationFilename>%Skin%\[DEFAULT]\</DestinationFilename>
-        <Folder>..\Installer\skin</Folder>
-        <Group>Skin files</Group>
-        <Recursive>true</Recursive>
-      </FolderGroup>
-    </FolderGroups>
+    <FolderGroups />
     <ProjectFilename>SpectrumAnalyzer.xmp2</ProjectFilename>
     <UpdatePath1>SpectrumAnalyzer-{VERSION}.xml</UpdatePath1>
     <UpdatePath2 />

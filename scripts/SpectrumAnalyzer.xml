@@ -13,14 +13,6 @@
               <Items />
             </Files>
           </GroupItem>
-          <GroupItem Name="Skin files">
-            <DisplayName>Skin files</DisplayName>
-            <DefaulChecked>true</DefaulChecked>
-            <Description>Skin files</Description>
-            <Files>
-              <Items />
-            </Files>
-          </GroupItem>
         </Items>
       </Groups>
       <Sections>
@@ -107,7 +99,7 @@
         <VersionDescription>First worked version for 1.18</VersionDescription>
         <DevelopmentStatus>Stable</DevelopmentStatus>
         <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/raw/master/builds/SpectrumAnalyzer-2.0.0.8.mpe1</OnlineLocation>
-        <ReleaseDate>2017-09-19T18:52:40.532189+03:00</ReleaseDate>
+        <ReleaseDate>2017-09-20T18:35:52.1034195+03:00</ReleaseDate>
         <Tags>music, spectrum, analyzer</Tags>
         <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
         <Params>
