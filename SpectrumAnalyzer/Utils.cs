@@ -199,14 +199,14 @@ namespace SpectrumAnalyzer
       SpectrumMin = 1;
       SpectrumMax = 15;
       SpectrumUpdate = 20;
-      SpectrumPeakFall = 50;
+      SpectrumPeakFall = 500;
       SpectrumPeakCalculation = Calculation.Average;
       SpectrumProvider = Provider.Mediaportal;
 
       SpectrumDBMin = SpectrumMin;
       SpectrumDBMax = SpectrumMax;
       SpectrumDBUpdate = 20;
-      SpectrumDBPeakFall = 50;
+      SpectrumDBPeakFall = 500;
 
       ShowSpectrum = Spectrum.Both;
       ShowVUMeter = Spectrum.Both;

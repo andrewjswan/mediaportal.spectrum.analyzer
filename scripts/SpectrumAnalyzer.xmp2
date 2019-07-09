@@ -27,6 +27,36 @@
           </Items>
         </Files>
       </GroupItem>
+      <GroupItem Name="Skin">
+        <DisplayName>Skin files</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>Skin</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{47866797-c413-47f4-b5c0-c4f001df3e96}-SkinSpectrumAnalyzer.xml</ZipFileName>
+              <DestinationFilename>%Skin%\Generic\SkinSpectrumAnalyzer.xml</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{97a32313-92fc-4853-a57f-05304a7964ba}-Spectrum.png</ZipFileName>
+              <DestinationFilename>%Skin%\Generic\Media\Spectrum\Spectrum.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{e6d5eeb8-0663-4278-a044-2a879b5e38a5}-SpectrumPeak.png</ZipFileName>
+              <DestinationFilename>%Skin%\Generic\Media\Spectrum\SpectrumPeak.png</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
     </Items>
   </Groups>
   <Sections>
@@ -214,10 +244,10 @@ cul8er</Value>
       <Revision>0</Revision>
     </Version>
     <ExtensionDescription>Spectrum Analyzer for Mediaportal</ExtensionDescription>
-    <VersionDescription>First worked version for 1.18</VersionDescription>
+    <VersionDescription>Bug fixes...</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/raw/master/builds/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
-    <ReleaseDate>2017-09-19T09:06:46</ReleaseDate>
+    <OnlineLocation>https://raw.githubusercontent.com/andrewjswan/mediaportal.spectrum.analyzer/master/builds/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
+    <ReleaseDate>2019-07-09T09:06:46</ReleaseDate>
     <Tags>music, spectrum, analyzer</Tags>
     <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
     <Params>
@@ -268,6 +298,27 @@ cul8er</Value>
         <ZipFileName>Installer{CopyFile}\{61c8db69-e77d-467a-9d09-7f73b1878bd5}-SpectrumAnalyzer.xml</ZipFileName>
         <DestinationFilename>%Config%\SpectrumAnalyzer.xml</DestinationFilename>
       </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{47866797-c413-47f4-b5c0-c4f001df3e96}-SkinSpectrumAnalyzer.xml</ZipFileName>
+        <DestinationFilename>%Skin%\Generic\SkinSpectrumAnalyzer.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{97a32313-92fc-4853-a57f-05304a7964ba}-Spectrum.png</ZipFileName>
+        <DestinationFilename>%Skin%\Generic\Media\Spectrum\Spectrum.png</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{e6d5eeb8-0663-4278-a044-2a879b5e38a5}-SpectrumPeak.png</ZipFileName>
+        <DestinationFilename>%Skin%\Generic\Media\Spectrum\SpectrumPeak.png</DestinationFilename>
+      </FileItem>
       <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
@@ -278,7 +329,18 @@ cul8er</Value>
     </Items>
   </UniqueFileList>
   <ProjectSettings>
-    <FolderGroups />
+    <FolderGroups>
+      <FolderGroup InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName />
+        <ZipFileName>Installer{CopyFile}\{d610ac6c-5f4d-4c6a-aea6-9695ebfca14d}-</ZipFileName>
+        <DestinationFilename>%Skin%\Generic\</DestinationFilename>
+        <Folder>..\Installer\skin</Folder>
+        <Group>Skin</Group>
+        <Recursive>true</Recursive>
+      </FolderGroup>
+    </FolderGroups>
     <ProjectFilename>SpectrumAnalyzer.xmp2</ProjectFilename>
     <UpdatePath1>SpectrumAnalyzer-{VERSION}.xml</UpdatePath1>
     <UpdatePath2 />
