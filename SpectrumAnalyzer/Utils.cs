@@ -166,24 +166,34 @@ namespace SpectrumAnalyzer
 
       loggingConfiguration.AddTarget("spectrum-analyzer", fileTarget);
 
-      var settings = new Settings(Config.GetFile((Config.Dir)10, "MediaPortal.xml"));
-      LogLevel minLevel;
-      switch ((int)(Level)settings.GetValueAsInt("general", "loglevel", 0))
+      LogLevel logLevel = LogLevel.Debug;
+      int intLogLevel = 3;
+
+      using (MediaPortal.Profile.Settings xmlreader = new MediaPortal.Profile.MPSettings())
+      {
+        intLogLevel = xmlreader.GetValueAsInt("general", "loglevel", intLogLevel);
+      }
+
+      switch (intLogLevel)
       {
         case 0:
-        minLevel = LogLevel.Error;
-        break;
+          logLevel = LogLevel.Error;
+          break;
         case 1:
-        minLevel = LogLevel.Warn;
-        break;
+          logLevel = LogLevel.Warn;
+          break;
         case 2:
-        minLevel = LogLevel.Info;
-        break;
+          logLevel = LogLevel.Info;
+          break;
         default:
-        minLevel = LogLevel.Debug;
-        break;
+          logLevel = LogLevel.Debug;
+          break;
       }
-      var loggingRule = new LoggingRule("*", minLevel, fileTarget);
+      #if DEBUG
+      logLevel = LogLevel.Debug;
+      #endif
+
+      var loggingRule = new LoggingRule("*", logLevel, fileTarget);
       loggingConfiguration.LoggingRules.Add(loggingRule);
       LogManager.Configuration = loggingConfiguration;
     }

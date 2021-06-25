@@ -244,10 +244,10 @@ cul8er</Value>
       <Revision>0</Revision>
     </Version>
     <ExtensionDescription>Spectrum Analyzer for Mediaportal</ExtensionDescription>
-    <VersionDescription>Bug fixes...</VersionDescription>
+    <VersionDescription>MP Configuration fix</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation>https://raw.githubusercontent.com/andrewjswan/mediaportal.spectrum.analyzer/master/builds/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
-    <ReleaseDate>2019-07-09T09:06:46</ReleaseDate>
+    <ReleaseDate>2021-06-25T09:06:46</ReleaseDate>
     <Tags>music, spectrum, analyzer</Tags>
     <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
     <Params>
