@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D348AF01-A02C-4E3E-8C85-6051D4805D2F}</ProjectGuid>
@@ -34,7 +34,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -44,7 +44,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -59,16 +59,13 @@
     <Reference Include="Common.GUIPlugins">
       <HintPath>..\External\Common.GUIPlugins.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Utils, Version=1.1.6.27644, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Common.Utils">
       <HintPath>..\External\Common.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Core">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Core.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NLog">
       <HintPath>..\External\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -148,5 +145,8 @@ copy $(ProjectDir)..\scripts\merge.bat .
 copy $(ProjectDir)..\scripts\Tools\ILMerge.exe .
 merge.bat
 del /q merge.bat ILMerge.exe</PostBuildEvent>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+        None
+    </ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
 </Project>

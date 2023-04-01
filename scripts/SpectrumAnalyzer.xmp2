@@ -244,10 +244,12 @@ cul8er</Value>
       <Revision>0</Revision>
     </Version>
     <ExtensionDescription>Spectrum Analyzer for Mediaportal</ExtensionDescription>
-    <VersionDescription>MP Configuration fix</VersionDescription>
+    <VersionDescription>Rebuild to support x86 and x64 architectures.
+
+*** We Stand with Ukraine ***</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation>https://raw.githubusercontent.com/andrewjswan/mediaportal.spectrum.analyzer/master/builds/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
-    <ReleaseDate>2021-06-25T09:06:46</ReleaseDate>
+    <ReleaseDate>2023-04-01T09:06:46</ReleaseDate>
     <Tags>music, spectrum, analyzer</Tags>
     <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
     <Params>
