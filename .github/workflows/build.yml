@@ -1,0 +1,130 @@
+name: Build / Spectrum Analyzer
+
+on:
+  push:
+    # On Push to Master branch
+    branches: 
+      - master
+    # Ignore all Tags / Release
+    tags-ignore:
+      - '**'
+
+  workflow_call:
+    inputs:
+      retention-build:
+        description: "Retention Period for Setup files. Default is 90"
+        default: 90
+        required: false
+        type: number
+
+jobs:
+  build:
+    name: Spectrum Analyzer / Build
+    runs-on: windows-2019
+    steps:
+      - name: Setup Visual Studio 2019
+        uses: microsoft/setup-msbuild@v2
+        with:
+          vs-version: 16.11
+
+      - name: Create cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}
+          key: plugin
+          
+      - name: Git Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build
+        run: |
+          build_git.bat < nul
+        working-directory: ${{ github.workspace }}\scripts
+        shell: cmd
+
+      - name: Upload Artifact / Plugin
+        uses: actions/upload-artifact@v4
+        if: ${{ success() }}
+        with:
+          name: Spectrum Analyzer
+          path: |
+            ${{ github.workspace }}\SpectrumAnalyzer\bin\Release\SpectrumAnalyzer.dll
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+  codeql:
+    name: CodeQL
+    uses: andrewjswan/MPE/.github/workflows/codeql.yml@master
+    needs: 
+      - build
+    permissions:
+      security-events: write
+    secrets: inherit
+
+  mpe:
+    name: Spectrum Analyzer / MPE
+    runs-on: windows-2019
+    needs:
+      - build
+    steps:
+      - name: Restore cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ github.workspace }}
+          key: plugin
+
+      - name: Git Checkout / MPE
+        uses: actions/checkout@v4
+        with:
+          repository: andrewjswan/MPE
+          path: MPE
+
+      - name: MP folder for MPEMaker
+        run: |
+          mkdir "C:\Team MediaPortal"
+        shell: cmd
+
+      - name: Link to MPEMaker
+        run: |
+          mklink /J "C:\Team MediaPortal\MediaPortal" "${{ github.workspace }}\MPE\MPEMaker"
+        shell: cmd
+
+      - name: Clear Build folder
+        run: |
+          del /F /Q *.*
+        working-directory: ${{ github.workspace }}\builds
+        shell: cmd
+
+      - name: Build MPE1
+        run: |
+          Create_Installer.bat
+        working-directory: ${{ github.workspace }}\scripts
+        shell: cmd
+
+      - name: Upload Artifact / MPE1
+        uses: actions/upload-artifact@v4
+        if: ${{ success() }}
+        with:
+          name: Spectrum Analyzer MPE1
+          path: |
+            ${{ github.workspace }}\builds\SpectrumAnalyzer-*.mpe1
+          retention-days: ${{ inputs.retention-build || 90 }}
+          if-no-files-found: error
+
+  ci-status:
+    name: Status
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - codeql
+      - mpe
+    if: always()
+    steps:
+      - name: Success
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Failure
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
