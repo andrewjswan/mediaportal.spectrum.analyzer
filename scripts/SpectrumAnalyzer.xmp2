@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PackageClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<PackageClass xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Version>2.0</Version>
   <Groups>
     <Items>
@@ -10,14 +10,14 @@
         <Description>Plugin files</Description>
         <Files>
           <Items>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true" Condition="None">
               <Param1 />
               <UpdateOption>AlwaysOverwrite</UpdateOption>
               <LocalFileName>..\SpectrumAnalyzer\bin\Release\SpectrumAnalyzer.dll</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{3e0cdaf9-7327-465e-b13e-9bf42591759d}-SpectrumAnalyzer.dll</ZipFileName>
               <DestinationFilename>%Base%\plugins\process\SpectrumAnalyzer.dll</DestinationFilename>
             </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true" Condition="None">
               <Param1 />
               <UpdateOption>OverwriteIfOlder</UpdateOption>
               <LocalFileName>..\Installer\config\SpectrumAnalyzer.xml</LocalFileName>
@@ -33,21 +33,21 @@
         <Description>Skin</Description>
         <Files>
           <Items>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
               <Param1 />
               <UpdateOption>OverwriteIfOlder</UpdateOption>
               <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{47866797-c413-47f4-b5c0-c4f001df3e96}-SkinSpectrumAnalyzer.xml</ZipFileName>
               <DestinationFilename>%Skin%\Generic\SkinSpectrumAnalyzer.xml</DestinationFilename>
             </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
               <Param1 />
               <UpdateOption>OverwriteIfOlder</UpdateOption>
               <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
               <ZipFileName>Installer{CopyFile}\{97a32313-92fc-4853-a57f-05304a7964ba}-Spectrum.png</ZipFileName>
               <DestinationFilename>%Skin%\Generic\Media\Spectrum\Spectrum.png</DestinationFilename>
             </FileItem>
-            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
               <Param1 />
               <UpdateOption>OverwriteIfOlder</UpdateOption>
               <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
@@ -61,7 +61,7 @@
   </Groups>
   <Sections>
     <Items>
-      <SectionItem Guid="950f0bd4-b21d-4cfb-b5ee-8d12d0129679" Name="Welcome Screen" ConditionGroup="">
+      <SectionItem Guid="950f0bd4-b21d-4cfb-b5ee-8d12d0129679" Name="Welcome Screen" ConditionGroup="" Condition="None">
         <Params>
           <Items>
             <SectionParam Name="Header text">
@@ -75,7 +75,7 @@ It is recommended that you close all other applications before continuing.
 Click Next to continue or Cancel to exit Setup.
 
 Best Regards
-cul8er</Value>
+ajs</Value>
               <ValueType>String</ValueType>
               <Description />
             </SectionParam>
@@ -98,7 +98,7 @@ cul8er</Value>
         <PanelName>Welcome Screen</PanelName>
         <WizardButtonsEnum>NextCancel</WizardButtonsEnum>
       </SectionItem>
-      <SectionItem Guid="ea79a142-a7c9-4530-b7a8-d3eac63eef42" Name="Install Section" ConditionGroup="">
+      <SectionItem Guid="ea79a142-a7c9-4530-b7a8-d3eac63eef42" Name="Install Section" ConditionGroup="" Condition="None">
         <Params>
           <Items>
             <SectionParam Name="Header Title">
@@ -120,7 +120,7 @@ cul8er</Value>
         </Params>
         <Actions>
           <Items>
-            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="">
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="" Condition="None">
               <Params>
                 <Items />
               </Params>
@@ -132,7 +132,7 @@ cul8er</Value>
         <PanelName>Install Section</PanelName>
         <WizardButtonsEnum>Next</WizardButtonsEnum>
       </SectionItem>
-      <SectionItem Guid="e4d0d8f2-ad3d-4036-a846-cb0122f99fd8" Name="Setup Complete" ConditionGroup="">
+      <SectionItem Guid="e4d0d8f2-ad3d-4036-a846-cb0122f99fd8" Name="Setup Complete" ConditionGroup="" Condition="None">
         <Params>
           <Items>
             <SectionParam Name="Header text">
@@ -172,20 +172,21 @@ cul8er</Value>
         <Type>MediaPortal</Type>
         <Id />
         <MinVersion>
-          <Major>1</Major>
-          <Minor>1</Minor>
-          <Build>6</Build>
-          <Revision>27644</Revision>
+          <Major>*</Major>
+          <Minor>*</Minor>
+          <Build>*</Build>
+          <Revision>*</Revision>
         </MinVersion>
         <MaxVersion>
-          <Major>1</Major>
-          <Minor>1</Minor>
-          <Build>6</Build>
-          <Revision>27644</Revision>
+          <Major>*</Major>
+          <Minor>*</Minor>
+          <Build>*</Build>
+          <Revision>*</Revision>
         </MaxVersion>
         <WarnOnly>false</WarnOnly>
-        <Message>Requires MediaPortal version 1.18</Message>
+        <Message />
         <Name>MediaPortal</Name>
+        <Condition>None</Condition>
       </DependencyItem>
       <DependencyItem>
         <Type>Skin</Type>
@@ -205,6 +206,7 @@ cul8er</Value>
         <WarnOnly>true</WarnOnly>
         <Message>Requires Skin version 1.4.0.0 to 1.4.0.0.</Message>
         <Name>Skin</Name>
+        <Condition>None</Condition>
       </DependencyItem>
       <DependencyItem>
         <Type>Installer</Type>
@@ -224,6 +226,7 @@ cul8er</Value>
         <WarnOnly>true</WarnOnly>
         <Message>Requires Installer version 1.9.0.0 to 1.99.999.999</Message>
         <Name>Installer</Name>
+        <Condition>None</Condition>
       </DependencyItem>
     </Items>
   </Dependencies>
@@ -245,12 +248,14 @@ cul8er</Value>
     </Version>
     <ExtensionDescription>Spectrum Analyzer for Mediaportal</ExtensionDescription>
     <VersionDescription>Rebuild to support x86 and x64 architectures.
+Update Repo and Extension
 
 *** We Stand with Ukraine ***</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation>https://raw.githubusercontent.com/andrewjswan/mediaportal.spectrum.analyzer/master/builds/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
-    <ReleaseDate>2023-04-01T09:06:46</ReleaseDate>
+    <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/releases/download/v{VERSION}/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
+    <ReleaseDate>2024-03-19T09:06:46</ReleaseDate>
     <Tags>music, spectrum, analyzer</Tags>
+    <PlatformCompatibility>AnyCPU</PlatformCompatibility>
     <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
     <Params>
       <Items>
@@ -286,42 +291,42 @@ cul8er</Value>
   </GeneralInfo>
   <UniqueFileList>
     <Items>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true" Condition="None">
         <Param1 />
         <UpdateOption>AlwaysOverwrite</UpdateOption>
         <LocalFileName>..\SpectrumAnalyzer\bin\Release\SpectrumAnalyzer.dll</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{3e0cdaf9-7327-465e-b13e-9bf42591759d}-SpectrumAnalyzer.dll</ZipFileName>
         <DestinationFilename>%Base%\plugins\process\SpectrumAnalyzer.dll</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\Installer\config\SpectrumAnalyzer.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{61c8db69-e77d-467a-9d09-7f73b1878bd5}-SpectrumAnalyzer.xml</ZipFileName>
         <DestinationFilename>%Config%\SpectrumAnalyzer.xml</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\Installer\skin\SkinSpectrumAnalyzer.xml</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{47866797-c413-47f4-b5c0-c4f001df3e96}-SkinSpectrumAnalyzer.xml</ZipFileName>
         <DestinationFilename>%Skin%\Generic\SkinSpectrumAnalyzer.xml</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\Installer\skin\Media\Spectrum\Spectrum.png</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{97a32313-92fc-4853-a57f-05304a7964ba}-Spectrum.png</ZipFileName>
         <DestinationFilename>%Skin%\Generic\Media\Spectrum\Spectrum.png</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\Installer\skin\Media\Spectrum\SpectrumPeak.png</LocalFileName>
         <ZipFileName>Installer{CopyFile}\{e6d5eeb8-0663-4278-a044-2a879b5e38a5}-SpectrumPeak.png</ZipFileName>
         <DestinationFilename>%Skin%\Generic\Media\Spectrum\SpectrumPeak.png</DestinationFilename>
       </FileItem>
-      <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
+      <FileItem InstallType="CopyFile" SystemFile="true" Modified="true" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\SpectrumAnalyzer\Resources\SpectrumAnalyzer_Icon.png</LocalFileName>
@@ -332,7 +337,7 @@ cul8er</Value>
   </UniqueFileList>
   <ProjectSettings>
     <FolderGroups>
-      <FolderGroup InstallType="CopyFile" SystemFile="false" Modified="true">
+      <FolderGroup InstallType="CopyFile" SystemFile="false" Modified="true" Condition="None">
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName />
@@ -344,7 +349,7 @@ cul8er</Value>
       </FolderGroup>
     </FolderGroups>
     <ProjectFilename>SpectrumAnalyzer.xmp2</ProjectFilename>
-    <UpdatePath1>SpectrumAnalyzer-{VERSION}.xml</UpdatePath1>
+    <UpdatePath1>SpectrumAnalyzer.xml</UpdatePath1>
     <UpdatePath2 />
     <UpdatePath3 />
   </ProjectSettings>

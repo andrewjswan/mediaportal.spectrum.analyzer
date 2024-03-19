@@ -13,16 +13,13 @@ if "%programfiles(x86)%XXX"=="XXX" goto 32BIT
 IF NOT EXIST "%PROGS%\Team MediaPortal\MediaPortal\" SET PROGS=C:
 
 :: Get version from DLL
-FOR /F "tokens=1-3" %%i IN ('Tools\sigcheck.exe -accepteula -nobanner "..\SpectrumAnalyzer\bin\Release\SpectrumAnalyzer.dll"') DO ( IF "%%i %%j"=="File version:" SET version=%%k )
-
-:: trim version
-SET version=%version:~0,-1%
+FOR /F "tokens=*" %%i IN ('Tools\sigcheck.exe /accepteula /nobanner /n "..\SpectrumAnalyzer\bin\Release\SpectrumAnalyzer.dll"') DO (SET version=%%i)
 
 :: Temp xmp2 file
 copy SpectrumAnalyzer.xmp2 SpectrumAnalyzerTemp.xmp2
 
-:: Sed "SpectrumAnalyzer-{VERSION}.xml" from xmp2 file
-Tools\sed.exe -i "s/SpectrumAnalyzer-{VERSION}.xml/SpectrumAnalyzer-%version%.xml/g" SpectrumAnalyzerTemp.xmp2
+:: Sed "{VERSION}" from xmp2 file
+Tools\sed.exe -i "s/{VERSION}/%version%/g" SpectrumAnalyzerTemp.xmp2
 
 :: Build mpe1
 "%PROGS%\Team MediaPortal\MediaPortal\MPEMaker.exe" SpectrumAnalyzerTemp.xmp2 /B /V=%version% /UpdateXML
