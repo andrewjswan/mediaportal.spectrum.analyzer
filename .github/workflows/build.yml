@@ -144,6 +144,27 @@ jobs:
         working-directory: ${{ github.workspace }}\scripts
         shell: cmd
 
+      - name: Clean Release Version Description
+        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        run: |
+          sed.exe -i "s/\*\*\* We Stand with Ukraine \*\*\*//g" description.txt
+        working-directory: ${{ github.workspace }}\setup
+        shell: cmd
+
+      - name: Add Badges to Release Version Description
+        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        run: |
+          ECHO [![Downloads](https://img.shields.io/github/downloads/andrewjswan/mediaportal.spectrum.analyzer/v${{steps.version.outputs.version}}/total)](https://github.com/andrewjswan/mediaportal.spectrum.analyzer/releases/tag/v${{steps.version.outputs.version}}) [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md) >> description.txt
+        working-directory: ${{ github.workspace }}\setup
+        shell: cmd
+
+      - name: Clean Release Version Description
+        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        run: |
+          sed.exe -i "s/ \//\//g" description.txt
+        working-directory: ${{ github.workspace }}\setup
+        shell: cmd
+
       - name: Upload Artifact / Version Description
         uses: actions/upload-artifact@v4
         if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}

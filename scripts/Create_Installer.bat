@@ -27,9 +27,6 @@ Tools\sed.exe -i "s/{VERSION}/%version%/g" SpectrumAnalyzerTemp.xmp2
 :: Cleanup
 del SpectrumAnalyzerTemp.xmp2
 
-:: Sed "SpectrumAnalyzer-{VERSION}.mpe1" from SpectrumAnalyzer.xml
-Tools\sed.exe -i "s/SpectrumAnalyzer-{VERSION}.mpe1/SpectrumAnalyzer-%version%.mpe1/g" SpectrumAnalyzer-%version%.xml
-
 :: Parse version (Might be needed in the futute)
 FOR /F "tokens=1-4 delims=." %%i IN ("%version%") DO ( 
 	SET major=%%i
