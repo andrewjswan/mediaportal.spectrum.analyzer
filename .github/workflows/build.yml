@@ -58,12 +58,27 @@ jobs:
           path: ${{ github.workspace }}
           key: plugin
 
+  changes:
+    name: XMP2 / Changed
+    runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.changes.outputs.xmp }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          xmp:
+            - '**.xmp2'
+
   codeql:
     name: CodeQL
-    if: "contains(github.event.head_commit.message, '[release]')"
+    if: ${{ needs.changes.outputs.changes == 'true' }}
     uses: andrewjswan/MPE/.github/workflows/codeql.yml@master
     needs: 
       - build
+      - changes
     permissions:
       security-events: write
     secrets: inherit
@@ -73,8 +88,10 @@ jobs:
     runs-on: windows-2019
     needs:
       - build
+      - changes
     outputs:
       version: ${{ steps.version.outputs.version }}
+      changes: ${{ needs.changes.outputs.changes }}
     steps:
       - name: Restore cache
         uses: actions/cache/restore@v4
@@ -129,7 +146,7 @@ jobs:
 
       - name: Upload Artifact / MPE XML
         uses: actions/upload-artifact@v4
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         with:
           name: SpectrumAnalyzer XML
           path: |
@@ -138,36 +155,37 @@ jobs:
           if-no-files-found: error
 
       - name: Get Release Version Description
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         run: |
           call ..\MPE\XPath\xpath.cmd "SpectrumAnalyzer.xml" "//Items/PackageClass/GeneralInfo/VersionDescription" last > description.txt
         working-directory: ${{ github.workspace }}\scripts
         shell: cmd
 
       - name: Clean Release Version Description
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         run: |
           sed.exe -i "s/\*\*\* We Stand with Ukraine \*\*\*//g" description.txt
-        working-directory: ${{ github.workspace }}\setup
+        working-directory: ${{ github.workspace }}\scripts
         shell: cmd
 
       - name: Add Badges to Release Version Description
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         run: |
+          ECHO. >> description.txt
           ECHO [![Downloads](https://img.shields.io/github/downloads/andrewjswan/mediaportal.spectrum.analyzer/v${{steps.version.outputs.version}}/total)](https://github.com/andrewjswan/mediaportal.spectrum.analyzer/releases/tag/v${{steps.version.outputs.version}}) [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md) >> description.txt
-        working-directory: ${{ github.workspace }}\setup
+        working-directory: ${{ github.workspace }}\scripts
         shell: cmd
 
       - name: Clean Release Version Description
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         run: |
           sed.exe -i "s/ \//\//g" description.txt
-        working-directory: ${{ github.workspace }}\setup
+        working-directory: ${{ github.workspace }}\scripts
         shell: cmd
 
       - name: Upload Artifact / Version Description
         uses: actions/upload-artifact@v4
-        if: ${{ success() && contains(github.event.head_commit.message, '[release]') }}
+        if: ${{ success() && needs.changes.outputs.changes == 'true' }}
         with:
           name: SpectrumAnalyzer Version Description
           path: |
@@ -178,11 +196,13 @@ jobs:
   xml:
     name: Spectrum Analyzer / XML
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[release]')"
+    if: ${{ needs.mpe.outputs.changes == 'true' }}
     needs:
       - mpe
     permissions:
       contents: write
+    outputs:
+      changes: ${{ needs.mpe.outputs.changes }}
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
@@ -209,12 +229,14 @@ jobs:
 
   release:
     name: Spectrum Analyzer / Release
-    if: "contains(github.event.head_commit.message, '[release]')"
+    if: ${{ needs.mpe.outputs.changes == 'true' }}
     needs:
       - mpe
       - xml
     permissions:
       contents: write
+    outputs:
+      changes: ${{ needs.mpe.outputs.changes }}
     
     runs-on: ubuntu-latest
     
@@ -275,7 +297,7 @@ jobs:
 
   release-status:
     name: Release Status
-    if: "contains(github.event.head_commit.message, '[release]')"
+    if: ${{ needs.release.outputs.changes == 'true' }}
     runs-on: ubuntu-latest
     needs:
       - release

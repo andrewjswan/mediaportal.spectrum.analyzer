@@ -252,11 +252,11 @@ Update Repo and Extension
 
 *** We Stand with Ukraine ***</VersionDescription>
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/releases/download/v{VERSION}/SpectrumAnalyzer-{VERSION}.mpe1</OnlineLocation>
+    <OnlineLocation>https://github.com/andrewjswan/mediaportal.spectrum.analyzer/releases/download/v[Version]/SpectrumAnalyzer-[Version].mpe1</OnlineLocation>
     <ReleaseDate>2024-03-19T09:06:46</ReleaseDate>
     <Tags>music, spectrum, analyzer</Tags>
     <PlatformCompatibility>AnyCPU</PlatformCompatibility>
-    <Location>..\builds\SpectrumAnalyzer-MAJOR.MINOR.BUILD.REVISION.mpe1</Location>
+    <Location>..\builds\SpectrumAnalyzer-[Version].mpe1</Location>
     <Params>
       <Items>
         <SectionParam Name="Icon">
