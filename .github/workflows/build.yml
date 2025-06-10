@@ -3,7 +3,7 @@ name: Build / Spectrum Analyzer
 on:
   push:
     # On Push to Master branch
-    branches: 
+    branches:
       - master
     # Ignore all Tags / Release
     tags-ignore:
@@ -24,13 +24,8 @@ on:
 jobs:
   build:
     name: Spectrum Analyzer / Build
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
-      - name: Setup Visual Studio 2019
-        uses: microsoft/setup-msbuild@v2
-        with:
-          vs-version: 16.11
-
       - name: Git Checkout
         uses: actions/checkout@v4
         with:
@@ -64,19 +59,19 @@ jobs:
     outputs:
       changes: ${{ steps.changes.outputs.xmp }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: dorny/paths-filter@v3
-      id: changes
-      with:
-        filters: |
-          xmp:
-            - '**.xmp2'
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            xmp:
+              - '**.xmp2'
 
   codeql:
     name: CodeQL
     if: ${{ needs.changes.outputs.changes == 'true' }}
     uses: Mediaportal-Plugin-Team/Mediaportal-Tools/.github/workflows/codeql.yml@master
-    needs: 
+    needs:
       - build
       - changes
     permissions:
@@ -85,7 +80,7 @@ jobs:
 
   mpe:
     name: Spectrum Analyzer / MPE
-    runs-on: windows-2019
+    runs-on: windows-2022
     needs:
       - build
       - changes
@@ -224,8 +219,8 @@ jobs:
       - name: Delete XML Artifact
         uses: geekyeggo/delete-artifact@v5
         with:
-            name: SpectrumAnalyzer XML
-            failOnError: false
+          name: SpectrumAnalyzer XML
+          failOnError: false
 
   release:
     name: Spectrum Analyzer / Release
@@ -237,9 +232,9 @@ jobs:
       contents: write
     outputs:
       changes: ${{ needs.mpe.outputs.changes }}
-    
+
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
@@ -308,7 +303,7 @@ jobs:
       - name: Failure
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
-  
+
   cache-clear:
     name: Clear cache
     runs-on: ubuntu-latest
