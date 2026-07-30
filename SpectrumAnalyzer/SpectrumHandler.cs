@@ -574,7 +574,7 @@ namespace SpectrumAnalyzer
     }
     #endregion
 
-    #region VE Meter
+    #region VU Meter
     public void RMSLevel()
     {
       double dBlevelL = 0.0;
